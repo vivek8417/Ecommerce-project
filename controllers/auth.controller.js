@@ -27,6 +27,7 @@ exports.signup = (req, res) => {
                 })
                     .then(roles => {
                         //populate user_roles table
+                        console.log("line 30",roles)
                         user.setRoles(roles)
                             .then(() => {
                                 res.status(200).send({ message: "User registered successfully" })
