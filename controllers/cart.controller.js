@@ -67,3 +67,29 @@ exports.update = (req, res) =>{
            
     })
 }
+
+exports.getCart = (req,res) =>{
+    Cart.findByPk(req.params.cartId)
+    .then(cart =>{
+        let ProductSelected=[]
+        console.log(cart)
+
+        cart.getProducts()
+        .then(products => {
+            for(let i=0; i<products.length;i++){
+                ProductSelected.push({
+                    id : products[i].id,
+                    name : products[i].name,
+                    cost : products[i].cost
+                }
+                )
+            }
+
+            res.status(200).send({
+                id:cart.id,
+                productSelected : ProductSelected,
+                cost : cart.cost
+            })
+        })
+    })
+}
