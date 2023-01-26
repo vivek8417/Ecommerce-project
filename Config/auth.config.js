@@ -1,4 +1,4 @@
 
 module.exports ={
-    secret : 'riya-bansal-secret-key'
+    secret : 'vivek-singh-secret-key'
 }
